@@ -1,0 +1,71 @@
+﻿kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: tempconverter
+  namespace: devops-tempconverter-aklasic
+  uid: 458c8f13-6b72-4f35-a5ad-11ba06cc1f7c
+  resourceVersion: '19803600'
+  creationTimestamp: '2023-06-08T14:52:59Z'
+  labels:
+    app: tempconverter
+    app.kubernetes.io/component: tempconverter
+    app.kubernetes.io/instance: tempconverter
+    app.kubernetes.io/name: tempconverter
+    app.kubernetes.io/part-of: tempconverter-app
+    app.openshift.io/runtime-version: dev
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2023-06-08T14:52:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2023-06-08T14:52:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+      subresource: status
+spec:
+  host: tempconverter-devops-tempconverter-aklasic.apps.na410r.prod.ole.redhat.com
+  to:
+    kind: Service
+    name: tempconverter
+    weight: 100
+  port:
+    targetPort: 5000-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: >-
+        tempconverter-devops-tempconverter-aklasic.apps.na410r.prod.ole.redhat.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2023-06-08T14:52:59Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.na410r.prod.ole.redhat.com
